@@ -31,14 +31,13 @@ class Item(models.Model):
     """Item model description."""
     city = models.CharField(
         max_length=200,
-        unique=True,
         verbose_name="Item city name",
     )
-    start_date = models.DateTimeField(
+    start_date = models.DateField(
         db_index=True,
         verbose_name="Item start date",
     )
-    end_date = models.DateTimeField(
+    end_date = models.DateField(
         db_index=True,
         verbose_name="Item end date",
     )
