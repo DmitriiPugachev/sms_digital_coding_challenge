@@ -1,2 +1,5 @@
 django==3.0.5
 python-dotenv==0.13.0
+djangorestframework==3.11.0
+django-filter==21.1
+requests==2.26.0
