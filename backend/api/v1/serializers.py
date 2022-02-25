@@ -6,7 +6,7 @@ from datetime import datetime
 from rest_framework import serializers
 
 from items.models import Item
-from api.v1.validators import end_date_validate
+from api.v1.validators import end_date_validate, positive_float_validate
 
 
 class ItemSerializer(serializers.ModelSerializer):
@@ -27,3 +27,7 @@ class ItemSerializer(serializers.ModelSerializer):
             first_value_name="End date",
             second_value_name="start date",
         )
+
+    def validate_price(self, value):
+        """Validate price is a positive float."""
+        return positive_float_validate(value=value, field_name="Price",)
