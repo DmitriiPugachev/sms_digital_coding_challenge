@@ -13,11 +13,11 @@ class Command(BaseCommand):
     """Command definition."""
 
     help = "Load items data from JSON file to DB"
-    DATE_FORMAT = "%m/%d/%Y"
+    EXPECTED_DATE_FORMAT = "%m/%d/%Y"
 
     def format_date(self, date):
         """A method for formatting date to the proper format."""
-        return datetime.strptime(date, self.DATE_FORMAT)
+        return datetime.strptime(date, self.EXPECTED_DATE_FORMAT)
 
     def handle(self, *args, **options):
         """A method for fulfilling database with items data from JSON file."""
