@@ -32,7 +32,6 @@ class Item(models.Model):
     city = models.CharField(
         max_length=200,
         unique=True,
-        db_index=True,
         verbose_name="Item city name",
     )
     start_date = models.DateField(
