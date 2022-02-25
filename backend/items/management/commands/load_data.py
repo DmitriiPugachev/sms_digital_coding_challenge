@@ -2,8 +2,8 @@
 
 
 import json
-
 from datetime import datetime
+
 from django.core.management.base import BaseCommand
 
 from items.models import Item
@@ -11,7 +11,13 @@ from items.models import Item
 
 class Command(BaseCommand):
     """Command definition."""
+
     help = "Load items data from JSON file to DB"
+    DATE_FORMAT = "%m/%d/%Y"
+
+    def format_date(self, date):
+        """A method for formatting date to the proper format."""
+        return datetime.strptime(date, self.DATE_FORMAT)
 
     def handle(self, *args, **options):
         """A method for fulfilling database with items data from JSON file."""
@@ -19,8 +25,8 @@ class Command(BaseCommand):
             load = json.load(file)
             for item in load:
                 city = item.get("city", None)
-                start_date = datetime.strptime(item.get("start_date", None), "%m/%d/%Y")
-                end_date = datetime.strptime(item.get("end_date", None), "%m/%d/%Y")
+                start_date = self.format_date(item.get("start_date", None))
+                end_date = self.format_date(item.get("end_date", None))
                 price = float(item.get("price", None))
                 status = item.get("status", None)
                 color = item.get("color", None)
