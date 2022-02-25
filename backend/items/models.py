@@ -43,11 +43,7 @@ class Item(models.Model):
         verbose_name="Item end date",
     )
     price = models.FloatField(
-        validators=(
-            MinValueValidator(
-                1, message="Price can not be negative."
-            ),
-        ),
+        validators=[MinValueValidator(0.0)],
         verbose_name="Item price",
     )
     status = models.CharField(
