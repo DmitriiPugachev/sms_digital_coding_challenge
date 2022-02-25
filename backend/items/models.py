@@ -2,6 +2,7 @@
 
 
 from colorfield.fields import ColorField
+from django.core.validators import MinValueValidator
 from django.db import models
 
 
@@ -42,6 +43,11 @@ class Item(models.Model):
         verbose_name="Item end date",
     )
     price = models.FloatField(
+        validators=(
+            MinValueValidator(
+                1, message="Price can not be negative."
+            ),
+        ),
         verbose_name="Item price",
     )
     status = models.CharField(
