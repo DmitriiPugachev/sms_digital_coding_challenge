@@ -7,6 +7,7 @@ from items.models import Item
 
 
 class ItemAdmin(admin.ModelAdmin):
+    """Item model admin config."""
     list_display = (
         "city",
         "start_date",
@@ -19,7 +20,6 @@ class ItemAdmin(admin.ModelAdmin):
     list_filter = (
         "start_date",
         "end_date",
-        "price",
         "status",
     )
     empty_value_display = "-empty-"
