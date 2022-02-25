@@ -34,11 +34,11 @@ class Item(models.Model):
         unique=True,
         verbose_name="Item city name",
     )
-    start_date = models.DateField(
+    start_date = models.DateTimeField(
         db_index=True,
         verbose_name="Item start date",
     )
-    end_date = models.DateField(
+    end_date = models.DateTimeField(
         db_index=True,
         verbose_name="Item end date",
     )
