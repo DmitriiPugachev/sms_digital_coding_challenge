@@ -49,12 +49,10 @@ class Item(models.Model):
     status = models.CharField(
         max_length=50,
         choices=ItemStatuses.ITEM_STATUSES_CHOICES,
-        default=ItemStatuses.NEVER,
         verbose_name="Item status",
     )
     color = ColorField(
         format="hex",
-        default="#FF0000",
         verbose_name="Item color",
     )
 
