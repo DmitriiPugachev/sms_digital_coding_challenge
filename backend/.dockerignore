@@ -1,3 +1,7 @@
-# static
+# Ignore all static files
 
 **/static
+
+# Ignore all docker files
+
+**/Dockerfile
