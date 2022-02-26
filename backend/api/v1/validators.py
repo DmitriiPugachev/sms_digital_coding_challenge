@@ -4,15 +4,13 @@
 from rest_framework import validators
 
 
-def end_date_validate(
-    first_value, second_value, first_value_name, second_value_name
-):
-    """Validate the first value is bigger than the second one."""
-    if first_value < second_value:
+def end_date_validate(start_date, end_date):
+    """Validate an end_date is bigger than a start date."""
+    if end_date < start_date:
         raise validators.ValidationError(
-            f"{first_value_name} must be bigger than {second_value_name}."
+            "An end date must be bigger than a start date."
         )
-    return first_value
+    return end_date
 
 
 def positive_float_validate(value, field_name):

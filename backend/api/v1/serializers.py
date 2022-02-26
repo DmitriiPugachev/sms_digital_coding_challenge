@@ -31,10 +31,8 @@ class ItemSerializer(serializers.ModelSerializer):
             start_date, self.EXPECTED_DATE_FORMAT
         ).date()
         return end_date_validate(
-            first_value=value,
-            second_value=start_date_formatted,
-            first_value_name="End date",
-            second_value_name="start date",
+            start_date=start_date_formatted,
+            end_date=value,
         )
 
     def validate_price(self, value):
