@@ -11,7 +11,6 @@ from items.models import Item
 
 class ItemViewSet(viewsets.ModelViewSet):
     """Item model ViewSet."""
-
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
     filter_backends = [DjangoFilterBackend]

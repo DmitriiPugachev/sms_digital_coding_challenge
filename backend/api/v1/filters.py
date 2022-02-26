@@ -8,8 +8,7 @@ from items.models import Item
 
 
 class ItemFilter(FilterSet):
-    """Item custom filter for start_date and end_date date pickers."""
-
+    """Filter Item objects by start date and end date."""
     start_date = DateFromToRangeFilter(field_name="start_date")
     end_date = DateFromToRangeFilter(field_name="end_date")
 

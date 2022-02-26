@@ -11,7 +11,6 @@ from items.models import Item
 
 class ItemSerializer(serializers.ModelSerializer):
     """Item model serializer."""
-
     EXPECTED_DATE_FORMAT = "%Y-%m-%d"
 
     class Meta:

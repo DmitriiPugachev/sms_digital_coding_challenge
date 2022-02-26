@@ -11,16 +11,15 @@ from items.models import Item
 
 class Command(BaseCommand):
     """Command definition."""
-
     help = "Load items data from JSON file to DB"
     EXPECTED_DATE_FORMAT = "%m/%d/%Y"
 
     def format_date(self, date):
-        """A method for formatting date to the proper format."""
+        """Format date to the proper format."""
         return datetime.strptime(date, self.EXPECTED_DATE_FORMAT)
 
     def handle(self, *args, **options):
-        """A method for fulfilling database with items data from JSON file."""
+        """Fulfill database with items data from JSON file."""
         with open("items/data/data.json", encoding="utf-8") as file:
             load = json.load(file)
             for item in load:

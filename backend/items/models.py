@@ -61,5 +61,5 @@ class Item(models.Model):
         verbose_name_plural = "Items"
 
     def __str__(self):
-        """Returns string view of a city field."""
+        """Return string view of a city field."""
         return self.city
