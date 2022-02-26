@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", default="default_value")
 
 DEBUG = os.getenv("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default=["localhost"]).split()
 
 
 # Application definition
