@@ -2,7 +2,6 @@
 
 
 from rest_framework import serializers
-from django.core import validators
 
 from api.v1.validators import end_date_validate, positive_number_validate
 from items.models import Item
@@ -26,7 +25,4 @@ class ItemSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         """Validate an end date is after a start date."""
-        return end_date_validate(
-            start_date=data["start_date"],
-            end_date=data["end_date"],
-        )
+        return end_date_validate(data)
