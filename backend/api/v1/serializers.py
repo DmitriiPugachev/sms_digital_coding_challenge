@@ -25,4 +25,11 @@ class ItemSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         """Validate an end date is after a start date."""
-        return end_date_validate(data)
+        request_method = self.context["request"].method
+        if request_method == "PATCH":
+            start_date = data.get("start_date", self.instance.start_date)
+            end_date = data.get("end_date", self.instance.end_date)
+        else:
+            start_date = data.get("start_date")
+            end_date = data.get("end_date")
+        return end_date_validate(start_date=start_date, end_date=end_date, data=data)
