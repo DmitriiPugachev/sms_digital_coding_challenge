@@ -55,7 +55,7 @@ Load data from JSON file to the DB:
 python manage.py load_data
 ```
 ### Links
-[redoc](http://localhost/api/docs/) this link is for local usage.
+[redoc](http://localhost/redoc/) this link is for local usage.
 
 [admin](http://localhost/admin/) this link is for local usage.
 
