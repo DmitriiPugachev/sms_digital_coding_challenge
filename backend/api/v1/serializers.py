@@ -1,16 +1,16 @@
 """API serializers."""
 
 
-from datetime import datetime
-
 from rest_framework import serializers
+from django.core import validators
 
-from api.v1.validators import end_date_validate, positive_float_validate
+from api.v1.validators import end_date_validate, positive_number_validate
 from items.models import Item
 
 
 class ItemSerializer(serializers.ModelSerializer):
     """Item model serializer."""
+    price = serializers.FloatField(validators=[positive_number_validate])
     EXPECTED_DATE_FORMAT = "%Y-%m-%d"
 
     class Meta:
@@ -24,20 +24,9 @@ class ItemSerializer(serializers.ModelSerializer):
             "color",
         )
 
-    def validate_end_date(self, value):
-        """Validate an end date is bigger than a start date."""
-        start_date = self.context["request"].data["start_date"]
-        start_date_formatted = datetime.strptime(
-            start_date, self.EXPECTED_DATE_FORMAT
-        ).date()
+    def validate(self, data):
+        """Validate an end date is after a start date."""
         return end_date_validate(
-            start_date=start_date_formatted,
-            end_date=value,
-        )
-
-    def validate_price(self, value):
-        """Validate price is a positive float."""
-        return positive_float_validate(
-            value=value,
-            field_name="Price",
+            start_date=data["start_date"],
+            end_date=data["end_date"],
         )
