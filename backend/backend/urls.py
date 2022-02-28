@@ -1,13 +1,12 @@
 """Project URLs."""
 
 
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include, path
-
-from rest_framework import permissions
-from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from django.conf.urls import url
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -15,18 +14,21 @@ urlpatterns = [
 ]
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="Coding challenge API",
-      default_version='v1',
-      description="Coding challenge project api app documentation",
-      contact=openapi.Contact(email="admin@admin.com"),
-      license=openapi.License(name="MIT License"),
-   ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
+    openapi.Info(
+        title="Coding challenge API",
+        default_version="v1",
+        description="Coding challenge project api app documentation",
+        contact=openapi.Contact(email="admin@admin.com"),
+        license=openapi.License(name="MIT License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns += [
-   url(r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0),
-       name="schema-redoc"),
+    url(
+        r"^redoc/$",
+        schema_view.with_ui("redoc", cache_timeout=0),
+        name="schema-redoc",
+    ),
 ]
