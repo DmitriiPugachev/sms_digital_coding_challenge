@@ -9,6 +9,7 @@ from items.models import Item
 
 class ItemSerializer(serializers.ModelSerializer):
     """Item model serializer."""
+
     price = serializers.FloatField(validators=[positive_number_validate])
     EXPECTED_DATE_FORMAT = "%Y-%m-%d"
 
@@ -32,4 +33,6 @@ class ItemSerializer(serializers.ModelSerializer):
         else:
             start_date = data.get("start_date")
             end_date = data.get("end_date")
-        return end_date_validate(start_date=start_date, end_date=end_date, data=data)
+        return end_date_validate(
+            start_date=start_date, end_date=end_date, data=data
+        )

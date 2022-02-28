@@ -16,5 +16,5 @@ def end_date_validate(start_date, end_date, data):
 def positive_number_validate(value):
     """Validate value is a positive number."""
     if value < 0.0:
-        raise validators.ValidationError(f"A number must be positive.")
+        raise validators.ValidationError("A number must be positive.")
     return value
