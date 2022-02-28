@@ -58,8 +58,5 @@ python manage.py load_data
 [redoc](http://localhost/redoc/) this link is for local usage.
 
 [admin](http://localhost/admin/) this link is for local usage.
-
-[API](http://localhost/api/) this link is for local usage.
-
 ### Author
 Dmitrii Pugachev
